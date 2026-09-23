@@ -19,7 +19,10 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
+import java.util.logging.Logger;
+
 import javax.sql.DataSource;
 
 import static org.osgi.service.jdbc.DataSourceFactory.*;
@@ -96,6 +99,11 @@ public class PlainDriverDataSource implements DataSource {
     void missingUrlException() throws SQLException {
         throw new SQLException("URL was not specified");            
     }
+
+	@Override
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+		return Logger.getLogger(DataSource.class.getName());
+	}
  
 
 }

@@ -18,11 +18,10 @@
 	<parent>
 		<groupId>org.eclipse</groupId>
 		<artifactId>gemini.jpa.parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../mvn_parent</relativePath>
+		<version>1.2.0-SNAPSHOT</version>
+		<relativePath>../org.eclipse.gemini.jpa.project</relativePath>
 	</parent>
 
 	<artifactId>org.eclipse.gemini.jpa.test.weavedpunit</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

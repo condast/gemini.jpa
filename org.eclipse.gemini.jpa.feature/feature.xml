@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.gemini.jpa.feature"
+      label="Feature"
+      version="1.2.0.qualifier"
+      provider-name="Condast">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.eclipse.gemini.jpa"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.xmlmappedpunit"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.embeddedjdbc"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.embeddedpunit"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.weavedpunit"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.samples"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.punit"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.gemini.jpa.test.emptypunit"
+         version="0.0.0"/>
+
+</feature>

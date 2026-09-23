@@ -15,10 +15,8 @@
 package org.eclipse.gemini.jpa.tests;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -26,7 +24,6 @@ import org.junit.runner.notification.Failure;
 
 import test.TestState;
 
-import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -44,13 +41,13 @@ import org.osgi.service.jpa.EntityManagerFactoryBuilder;
  * 
  * @author mkeith
  */
-public class Activator implements BundleActivator, ServiceTrackerCustomizer {
+public class Activator implements BundleActivator, ServiceTrackerCustomizer<Object,Object> {
 
     BundleContext ctx;
     
-    ServiceTracker emfTracker;
-    ServiceTracker emfbTracker;
-    ServiceTracker dsfTracker;
+    ServiceTracker<?,?> emfTracker;
+    ServiceTracker<?,?> emfbTracker;
+    ServiceTracker<?,?> dsfTracker;
     
     // Map of test class to test instance
     Map<Class<? extends JpaTest>,JpaTest> testClasses = new HashMap<Class<? extends JpaTest>,JpaTest>();    
@@ -62,9 +59,9 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
         ctx = context;
         JpaTest.context = context;
                 
-        emfTracker = new ServiceTracker(ctx, EntityManagerFactory.class.getName(), this);
-        emfbTracker = new ServiceTracker(ctx, EntityManagerFactoryBuilder.class.getName(), this);
-        dsfTracker = new ServiceTracker(ctx, DataSourceFactory.class.getName(), this);
+        emfTracker = new ServiceTracker<>(ctx, EntityManagerFactory.class.getName(), this);
+        emfbTracker = new ServiceTracker<>(ctx, EntityManagerFactoryBuilder.class.getName(), this);
+        dsfTracker = new ServiceTracker<>(ctx, DataSourceFactory.class.getName(), this);
 
         // Create the set of tests to run (get list from TestState)
         try {
@@ -140,7 +137,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
     /* ServiceTracker methods */
     /*========================*/
 
-    public Object addingService(ServiceReference ref) {
+    public Object addingService(ServiceReference<Object> ref) {
         Object service = ref.getBundle().getBundleContext().getService(ref);
 
         // Check to see if it is a DSF (and the Client driver)
@@ -151,7 +148,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
             log("Service added **** DataSourceFactory for " + driverClassName);
             // Now go through the pending dsf queue and run the tests
             log("**** Running queued tests");
-            for (Class cls : TestState.dsfQueuedTests) {
+            for (Class<?> cls : TestState.dsfQueuedTests) {
                 runTest((Class<? extends JpaTest>)cls);
             }
             log("**** Finished running queued tests");
@@ -187,9 +184,9 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
         return service;
     }
 
-    public void modifiedService(ServiceReference ref, Object service) {}
+    public void modifiedService(ServiceReference<Object> ref, Object service) {}
 
-    public void removedService(ServiceReference ref, Object service) {}
+    public void removedService(ServiceReference<Object> ref, Object service) {}
 
     /*================*/
     /* Helper methods */

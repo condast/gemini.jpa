@@ -14,12 +14,8 @@
  ******************************************************************************/
 package org.eclipse.gemini.jpa;
 
-import static org.eclipse.gemini.jpa.GeminiUtil.debug;
-import static org.eclipse.gemini.jpa.GeminiUtil.fatalError;
-
 import java.io.Closeable;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -70,7 +66,7 @@ public class GeminiUtil {
     
     // Obtain and return the PackageAdmin    
     public static PackageAdmin getPackageAdmin(BundleContext ctx) {
-        ServiceReference ref = ctx.getServiceReference(PackageAdmin.class.getName());
+        ServiceReference<?> ref = ctx.getServiceReference(PackageAdmin.class.getName());
         return (ref != null) 
             ? (PackageAdmin) ctx.getService(ref)
             : null;

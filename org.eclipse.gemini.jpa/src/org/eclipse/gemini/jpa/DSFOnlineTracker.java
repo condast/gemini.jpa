@@ -22,7 +22,7 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  *  Created and started when no DSF service was found to be registered
  *  at EMF service registration time.
  */
-public class DSFOnlineTracker implements ServiceTrackerCustomizer {
+public class DSFOnlineTracker implements ServiceTrackerCustomizer<Object,Object> {
 
     // The unit this tracker belongs to
     private PUnitInfo pUnitInfo;
@@ -36,15 +36,15 @@ public class DSFOnlineTracker implements ServiceTrackerCustomizer {
         this.servicesUtil = servicesUtil;
     }
     
-    public Object addingService(ServiceReference ref) {
+    public Object addingService(ServiceReference<Object> ref) {
         GeminiUtil.debug("OnlineTracker.addingService - ", ref);
         servicesUtil.dataSourceFactoryOnline(pUnitInfo, ref);
         return null;
     }
 
-    public void modifiedService(ServiceReference ref, Object service) {}
+    public void modifiedService(ServiceReference<Object> ref, Object service) {}
 
-    public void removedService(ServiceReference ref, Object service) {
+    public void removedService(ServiceReference<Object> ref, Object service) {
         GeminiUtil.debug("OnlineTracker.removingService - ignoring service ", ref);
     }
 }

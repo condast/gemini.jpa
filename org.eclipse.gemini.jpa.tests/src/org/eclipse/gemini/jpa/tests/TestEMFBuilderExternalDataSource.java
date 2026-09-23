@@ -48,7 +48,7 @@ public class TestEMFBuilderExternalDataSource extends JpaTest {
         EntityManagerFactoryBuilder emfb = lookupEntityManagerFactoryBuilder(TEST_NAME, PERSISTENCE_UNIT_UNDER_TEST);
         DataSource ds = null;
         try {
-            ServiceReference[] refs = context.getServiceReferences(
+            ServiceReference<?>[] refs = context.getServiceReferences(
                     DataSourceFactory.class.getName(), "(osgi.jdbc.driver.class=" + JDBC_TEST_DRIVER + ")");
             if (refs == null) {
                 throw new RuntimeException("Failed looking up driver in registry");

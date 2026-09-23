@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+    http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.eclipse</groupId>
+    <artifactId>gemini.jpa.parent</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+  	<licenses>
+    	<license>
+      		<name>Apache License, Version 2.0</name>
+      		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      		<distribution>repo</distribution>
+    	</license>
+  	</licenses>
+
+    <properties>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.release>11</maven.compiler.release>
+		<tycho.version>5.0.4</tycho.version>
+        <generics>P:/GitHub</generics>
+        <maven.build.timestamp.format>yyyy-MM-dd-HHmmss</maven.build.timestamp.format>
+		<bundle-name>org.eclipse.gemini.jpa</bundle-name>
+		<build-name>EE8</build-name>
+		<project-name>gemini.jpa</project-name>
+        <project-root>P:/GitHub/Gemini/${project-name}</project-root>
+        <workspace-root>P:/Workspace/${project-name}</workspace-root>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+		<target-name>gemini-maven.target</target-name>
+		<update-site>${project-root}/${bundle-name}.update/target/repository/plugins</update-site>
+		<release-dir>P:/Releases/${build-name}/${bundle-name}</release-dir>
+    </properties>
+
+	<distributionManagement>
+		<repository>
+			<id>release directory</id>
+			<url>file:${release-dir}/deploy/${bundle-name}</url>
+		</repository>
+	</distributionManagement>
+
+  <modules>
+    <module>../org.eclipse.gemini.jpa.target</module>
+    <module>../org.osgi.service.jpa</module>
+    <module>../org.eclipse.gemini.jpa</module>
+    <module>../org.eclipse.gemini.jpa.samples</module>
+    <module>../org.eclipse.gemini.jpa.test.embeddedjdbc</module>
+    <module>../org.eclipse.gemini.jpa.test.embeddedpunit</module>
+    <module>../org.eclipse.gemini.jpa.test.emptypunit</module>
+    <module>../org.eclipse.gemini.jpa.test.punit</module>
+    <!-- <module>../org.eclipse.gemini.jpa.test.state</module> -->
+    <module>../org.eclipse.gemini.jpa.test.weavedpunit</module>
+    <module>../org.eclipse.gemini.jpa.test.xmlmappedpunit</module>
+    <!--  <module>../org.eclipse.gemini.jpa.tests</module> -->
+    <module>../org.eclipse.gemini.jpa.feature</module>
+    <module>../org.eclipse.gemini.jpa.update</module>
+    <!-- <module>../org.eclipse.gemini.jpa.packaging</module> -->
+  </modules>
+  
+    <build>
+		 <pluginManagement>
+		     <plugins>
+		       <plugin>
+		         <groupId>org.eclipse.tycho</groupId>
+		         <artifactId>tycho-p2-director-plugin</artifactId>
+		         <version>${tycho.version}</version>
+		       </plugin>
+		     </plugins>
+		 </pluginManagement>
+         <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <executionEnvironment>JavaSE-25</executionEnvironment>
+					<pomDependencies>consider</pomDependencies>
+					<target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${target-name}</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+                    <environments>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+                </configuration>
+            </plugin>
+			<plugin>
+			   <groupId>org.eclipse.tycho</groupId>
+			   <artifactId>tycho-p2-repository-plugin</artifactId>
+			   <version>${tycho.version}</version>
+			   <configuration>
+			      <skipArchive>true</skipArchive>
+			      <includeAllDependencies>false</includeAllDependencies>
+			    </configuration>
+			</plugin>
+            <plugin>
+               	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-resources-plugin</artifactId>
+               	<version>3.2.0</version>
+  				<executions>
+    				<execution>
+       					<id>copy-resource-one</id>
+       					<phase>package</phase>
+       					<goals>
+          					<goal>copy-resources</goal>
+       					</goals>
+    					<configuration>
+        					<outputDirectory>${release-dir}/${maven.build.timestamp}</outputDirectory>
+            					<resources>
+                					<resource>
+                						<directory>${update-site}</directory>
+                					</resource>
+                				</resources>
+            			</configuration>
+        			</execution>
+    			</executions>
+           	</plugin>
+        </plugins>
+    </build>
+</project> 

@@ -33,7 +33,7 @@ import static org.eclipse.gemini.jpa.GeminiUtil.*;
 /**
  * Dynamic proxy class to proxy the EMF service
  */
-public class EMFServiceProxyHandler implements InvocationHandler, ServiceFactory {
+public class EMFServiceProxyHandler implements InvocationHandler, ServiceFactory<Object> {
     
     PUnitInfo pUnitInfo;
     
@@ -82,12 +82,12 @@ public class EMFServiceProxyHandler implements InvocationHandler, ServiceFactory
     /* ServiceFactory methods */
     /*========================*/
 
-    public Object getService(Bundle b, ServiceRegistration serviceReg) {
+    public Object getService(Bundle b, ServiceRegistration<Object> serviceReg) {
         // TODO Track client bundles that use this service and clean up if they leave
         return this;
     }
     
-    public void ungetService(Bundle b, ServiceRegistration serviceReg, Object obj) {
+    public void ungetService(Bundle b, ServiceRegistration<Object> serviceReg, Object obj) {
         // EMF is shared, leave as is until the p-unit or the provider goes away
         // and the service is unregistered
     }

@@ -147,7 +147,7 @@ public abstract class JpaTest {
 
     public static EntityManagerFactory lookupEntityManagerFactory(String testName, String puName) {
         String filter = "(osgi.unit.name="+puName+")";
-        ServiceReference[] refs = null;
+        ServiceReference<?>[] refs = null;
         try {
             refs = context.getServiceReferences(EntityManagerFactory.class.getName(), filter);
         } catch (InvalidSyntaxException isEx) {
@@ -161,7 +161,7 @@ public abstract class JpaTest {
     
     public static EntityManagerFactoryBuilder lookupEntityManagerFactoryBuilder(String testName, String puName) {
         String filter = "(osgi.unit.name="+puName+")";
-        ServiceReference[] refs = null;
+        ServiceReference<?>[] refs = null;
         try {
             refs = context.getServiceReferences(EntityManagerFactoryBuilder.class.getName(), filter);
         } catch (InvalidSyntaxException isEx) {

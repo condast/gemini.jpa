@@ -29,10 +29,10 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  * 
  * @author mkeith
  */
-public class Activator implements BundleActivator, ServiceTrackerCustomizer {
+public class Activator implements BundleActivator, ServiceTrackerCustomizer<Object,Object> {
 
     BundleContext ctx;
-    ServiceTracker emfTracker;
+    ServiceTracker<?,?> emfTracker;
     Client client;
 
     public void start(BundleContext context) throws Exception {
@@ -45,7 +45,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
          * just saving us the lookup, but this is the idea of how you would listen for a 
          * persistence unit coming from another bundle.
          */
-        emfTracker = new ServiceTracker(ctx, EntityManagerFactory.class.getName(), this);
+        emfTracker = new ServiceTracker<>(ctx, EntityManagerFactory.class.getName(), this);
         emfTracker.open();
     }
 
@@ -59,7 +59,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
     /* ServiceTracker methods */
     /*========================*/
 
-    public Object addingService(ServiceReference ref) {
+    public Object addingService(ServiceReference<Object> ref) {
         Bundle b = ref.getBundle();
         Object service = b.getBundleContext().getService(ref);
         String unitName = (String)ref.getProperty(EntityManagerFactoryBuilder.JPA_UNIT_NAME);
@@ -68,6 +68,6 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
         }
         return service;
     }
-    public void modifiedService(ServiceReference ref, Object service) {}
-    public void removedService(ServiceReference ref, Object service) {}    
+    public void modifiedService(ServiceReference<Object> ref, Object service) {}
+    public void removedService(ServiceReference<Object> ref, Object service) {}    
 }

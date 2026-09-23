@@ -14,8 +14,6 @@
  ******************************************************************************/
 package org.eclipse.gemini.jpa;
 
-import static org.eclipse.gemini.jpa.GeminiUtil.debug;
-
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
@@ -24,7 +22,7 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
  *  Created and started when a registered DSF service was discovered 
  *  at EMF service registration time.
  */
-public class DSFOfflineTracker implements ServiceTrackerCustomizer {
+public class DSFOfflineTracker implements ServiceTrackerCustomizer<Object,Object> {
 
     // The unit this tracker belongs to
     private PUnitInfo pUnitInfo;
@@ -37,14 +35,14 @@ public class DSFOfflineTracker implements ServiceTrackerCustomizer {
         this.servicesUtil = servicesUtil;
     }
     
-    public Object addingService(ServiceReference ref) {
+    public Object addingService(ServiceReference<Object> ref) {
         GeminiUtil.debug("OfflineTracker.addingService - ignoring service ", ref);
         return null;
     }
 
-    public void modifiedService(ServiceReference ref, Object service) {}
+    public void modifiedService(ServiceReference<Object> ref, Object service) {}
 
-    public void removedService(ServiceReference ref, Object service) {
+    public void removedService(ServiceReference<Object> ref, Object service) {
         GeminiUtil.debug("OfflineTracker.removingService ", ref);
         servicesUtil.dataSourceFactoryOffline(pUnitInfo, ref);
     }

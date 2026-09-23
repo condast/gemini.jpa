@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSGI Jpa
+Bundle-SymbolicName: org.osgi.servlce.jpa
+Bundle-Version: 1.2.0.qualifier
+Import-Package: javax.persistence;version="[2.2.0,3.0.0)",
+ org.osgi.framework;version="1.9.0",
+ org.osgi.namespace.extender;version="[1.0.0,2.0.0)",
+ org.osgi.resource;version="[1.0.0,2.0.0)"
+Bundle-Vendor: Eclipse.org
+Automatic-Module-Name: org.osgi.service.jpa
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.osgi.service.jpa

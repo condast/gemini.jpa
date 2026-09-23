@@ -121,10 +121,10 @@ public class BundleProxyClassLoader extends ClassLoader {
         return entry;
     }
 
-    private final class ListEnumeration implements Enumeration {
-        private Iterator iterator;
+    private final class ListEnumeration implements Enumeration<URL> {
+        private Iterator<URL> iterator;
 
-        public ListEnumeration(List<?> list) {
+        public ListEnumeration(List<URL> list) {
             this.iterator = list.iterator();
         }
 
@@ -132,7 +132,7 @@ public class BundleProxyClassLoader extends ClassLoader {
             return iterator.hasNext();
         }
 
-        public Object nextElement() {
+        public URL nextElement() {
             return iterator.next();
         }
     }

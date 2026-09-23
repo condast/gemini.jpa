@@ -22,7 +22,6 @@ import static org.eclipse.gemini.jpa.GeminiUtil.warning;
 import static org.osgi.service.jdbc.DataSourceFactory.JDBC_PASSWORD;
 import static org.osgi.service.jdbc.DataSourceFactory.JDBC_URL;
 import static org.osgi.service.jdbc.DataSourceFactory.JDBC_USER;
-import static org.osgi.service.jdbc.DataSourceFactory.OSGI_JDBC_DRIVER_CLASS;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -345,7 +344,7 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
         }
 
         // Try using a DSF service if we have one stored away and the one asked for is the same
-        ServiceReference dsfRef = pUnitInfo.getDsfService();
+        ServiceReference<?> dsfRef = pUnitInfo.getDsfService();
         if ((dsfRef != null) && (driverName.equals(pUnitInfo.getDriverClassName()))) {
             debug("Using existing DSF service ref from punit ", pUnitInfo.getUnitName());
             DataSourceFactory dsf = (DataSourceFactory) getBundleContext().getService(dsfRef);
@@ -362,7 +361,7 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
         if (driver == null) {
             debug("Trying dynamic lookup of DSF for ", driverName, " for p-unit ", pUnitInfo.getUnitName());
             String filter = "(" + DataSourceFactory.OSGI_JDBC_DRIVER_CLASS + "=" + driverName + ")";
-            ServiceReference[] dsfRefs = null;
+            ServiceReference<?>[] dsfRefs = null;
             try {
                 dsfRefs = pUnitInfo.getBundle().getBundleContext().getServiceReferences(
                             DataSourceFactory.class.getName(), filter);
@@ -456,4 +455,16 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
         } catch (IOException e) {
         }
     }
+
+	@Override
+	public void generateSchema(PersistenceUnitInfo info, Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean generateSchema(String persistenceUnitName, Map map) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

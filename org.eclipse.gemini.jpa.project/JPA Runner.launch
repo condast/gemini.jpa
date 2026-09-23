@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.pde.ui.EquinoxLauncher">
+    <booleanAttribute key="append.args" value="true"/>
+    <booleanAttribute key="automaticAdd" value="true"/>
+    <booleanAttribute key="automaticValidate" value="true"/>
+    <stringAttribute key="bootstrap" value=""/>
+    <stringAttribute key="checked" value="[NONE]"/>
+    <booleanAttribute key="clearConfig" value="true"/>
+    <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/JPA Runner"/>
+    <booleanAttribute key="default" value="true"/>
+    <booleanAttribute key="default_auto_start" value="true"/>
+    <intAttribute key="default_start_level" value="4"/>
+    <setAttribute key="deselected_workspace_bundles"/>
+    <booleanAttribute key="includeOptional" value="true"/>
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-27"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dorg.eclipse.swt.graphics.Resource.reportNonDisposed=true -Declipse.ignoreApp=true -Dosgi.noShutdown=true"/>
+    <stringAttribute key="pde.version" value="3.3"/>
+    <setAttribute key="selected_target_bundles">
+        <setEntry value="javax.persistence@default:default"/>
+        <setEntry value="junit-platform-commons@default:default"/>
+        <setEntry value="junit-platform-engine@default:default"/>
+        <setEntry value="junit-platform-launcher@default:default"/>
+        <setEntry value="junit-vintage-engine@default:default"/>
+        <setEntry value="org.apache.felix.gogo.runtime@default:default"/>
+        <setEntry value="org.apache.felix.gogo.shell@default:default"/>
+        <setEntry value="org.eclipse.equinox.console@default:default"/>
+        <setEntry value="org.eclipse.osgi@1:true"/>
+        <setEntry value="org.eclipse.persistence.antlr@default:default"/>
+        <setEntry value="org.eclipse.persistence.asm@default:default"/>
+        <setEntry value="org.eclipse.persistence.core@default:default"/>
+        <setEntry value="org.eclipse.persistence.jpa@default:default"/>
+        <setEntry value="org.objectweb.asm.commons@default:default"/>
+        <setEntry value="org.objectweb.asm.tree.analysis@default:default"/>
+        <setEntry value="org.objectweb.asm.tree@default:default"/>
+        <setEntry value="org.objectweb.asm.util@default:default"/>
+        <setEntry value="org.objectweb.asm@default:default"/>
+        <setEntry value="org.opentest4j@default:default"/>
+        <setEntry value="org.osgi.namespace.extender@default:default"/>
+        <setEntry value="org.osgi.service.component@default:default"/>
+        <setEntry value="org.osgi.service.jdbc@default:default"/>
+        <setEntry value="org.osgi.util.function@default:default"/>
+        <setEntry value="org.osgi.util.promise@default:default"/>
+        <setEntry value="wrapped.junit.junit@default:default"/>
+    </setAttribute>
+    <setAttribute key="selected_workspace_bundles">
+        <setEntry value="com.mysql.jdbc@default:default"/>
+        <setEntry value="org.apache.derby@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.derby@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.mysql@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.postgresql@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.samples@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.test@default:default"/>
+        <setEntry value="org.eclipse.gemini.dbaccess.util@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.samples@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.embeddedjdbc@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.embeddedpunit@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.emptypunit@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.punit@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.state@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.weavedpunit@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.test.xmlmappedpunit@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa.tests@default:default"/>
+        <setEntry value="org.eclipse.gemini.jpa@default:default"/>
+        <setEntry value="org.osgi.servlce.jpa@default:default"/>
+        <setEntry value="org.postgresql.jdbc-java6@default:default"/>
+        <setEntry value="org.postgresql.jdbc-java7@default:default"/>
+        <setEntry value="org.postgresql.jdbc-java8@default:default"/>
+        <setEntry value="osgi.enterprise@default:default"/>
+    </setAttribute>
+    <booleanAttribute key="show_selected_only" value="false"/>
+    <booleanAttribute key="tracing" value="false"/>
+    <booleanAttribute key="useCustomFeatures" value="false"/>
+    <booleanAttribute key="useDefaultConfigArea" value="true"/>
+</launchConfiguration>

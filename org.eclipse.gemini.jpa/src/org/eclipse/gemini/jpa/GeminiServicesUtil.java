@@ -26,8 +26,6 @@ import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
-import java.sql.Driver;
-
 import javax.persistence.EntityManagerFactory;
 
 import org.eclipse.gemini.jpa.classloader.BundleProxyClassLoader;
@@ -36,7 +34,6 @@ import org.eclipse.gemini.jpa.provider.OSGiJpaProvider;
 import org.eclipse.gemini.jpa.proxy.EMFBuilderServiceProxyHandler;
 import org.eclipse.gemini.jpa.proxy.EMFServiceProxyHandler;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
@@ -59,7 +56,7 @@ public class GeminiServicesUtil {
     AnchorClassUtil anchorUtil;
     
     // PersistenceProvider service
-    ServiceRegistration providerService;
+    ServiceRegistration<?> providerService;
     
     
     public GeminiServicesUtil(OSGiJpaProvider provider, AnchorClassUtil anchorUtil) {
@@ -156,7 +153,7 @@ public class GeminiServicesUtil {
         stopTrackingDataSourceFactory(pUnitInfo);
 
         // If an EMF service is registered then unregister it
-        ServiceRegistration emfService = pUnitInfo.getEmfService();
+        ServiceRegistration<?> emfService = pUnitInfo.getEmfService();
         if (emfService != null) {
             debug("GeminiServicesUtil un-registering EMF service for ", pUnitInfo.getUnitName());
             try { 
@@ -189,7 +186,7 @@ public class GeminiServicesUtil {
         debug("GeminiServicesUtil un-registerEMFBuilderService for ", pUnitInfo.getUnitName());
 
         // Unregister the service
-        ServiceRegistration emfBuilderService = pUnitInfo.getEmfBuilderService();
+        ServiceRegistration<?> emfBuilderService = pUnitInfo.getEmfBuilderService();
         if (emfBuilderService != null) {
             debug("GeminiServicesUtil un-registering EMFBuilder service for ", pUnitInfo.getUnitName());
             try {
@@ -392,7 +389,7 @@ public class GeminiServicesUtil {
                 classNameArray[i] = classArray[i].getName();
 
             // Register the EMF service (using p-unit context) and set registration in PUnitInfo
-            ServiceRegistration emfService = null;
+            ServiceRegistration<?> emfService = null;
             try {
                 emfService = pUnitInfo.getBundle().getBundleContext()
                                .registerService(classNameArray, emfServiceProxy, props);
@@ -438,7 +435,7 @@ public class GeminiServicesUtil {
             classNameArray[i] = classArray[i].getName();
     
         //Register the EMFBuilder service and set it in the PUnitInfo
-        ServiceRegistration emfBuilderService = null;
+        ServiceRegistration<?> emfBuilderService = null;
         try {
             // TODO Should be registered by p-unit context, not provider context
             // emfBuilderService = pUnitInfo.getBundle().getBundleContext()
@@ -471,8 +468,8 @@ public class GeminiServicesUtil {
     public boolean trackDataSourceFactory(PUnitInfo pUnitInfo) {
         
         debug("GeminiServicesUtil trackDataSourceFactory for p-unit ", pUnitInfo.getUnitName());
-        ServiceReference[] dsfRefs = null;
-        ServiceTracker tracker = null;
+        ServiceReference<?>[] dsfRefs = null;
+        ServiceTracker<Object,Object> tracker = null;
 
         // See if the data source factory service for the driver is registered
         String filter = "(" + DataSourceFactory.OSGI_JDBC_DRIVER_CLASS + "=" + pUnitInfo.getDriverClassName() + ")";
@@ -484,14 +481,14 @@ public class GeminiServicesUtil {
                 // We found at least one -- track the first one
                 // *** Note: Race condition still exists where service could disappear before being tracked
                 debug("GeminiServicesUtil starting tracker on existing DSF for ", pUnitInfo.getUnitName());
-                tracker = new ServiceTracker(osgiJpaProvider.getBundleContext(), 
-                                             dsfRefs[0],
+                tracker = new ServiceTracker<Object,Object>(osgiJpaProvider.getBundleContext(), 
+                                             (ServiceReference<Object>) dsfRefs[0],
                                              new DSFOfflineTracker(pUnitInfo, this));
                 pUnitInfo.setDsfService(dsfRefs[0]);
             } else {
                 // No service was found, track for a service that may come in the future 
                 debug("GeminiServicesUtil starting tracker to wait for DSF for ", pUnitInfo.getUnitName());
-                tracker = new ServiceTracker(osgiJpaProvider.getBundleContext(), 
+                tracker = new ServiceTracker<>(osgiJpaProvider.getBundleContext(), 
                                              osgiJpaProvider.getBundleContext().createFilter(filter),
                                              new DSFOnlineTracker(pUnitInfo, this));
             }
@@ -525,7 +522,7 @@ public class GeminiServicesUtil {
      * service comes online. This occurs when the p-unit has been processed before the
      * JDBC service has had a chance to be activated or register its DSF services.
      */
-    public void dataSourceFactoryOnline(PUnitInfo pUnitInfo, ServiceReference ref) {
+    public void dataSourceFactoryOnline(PUnitInfo pUnitInfo, ServiceReference<?> ref) {
         // TODO async handling of data source adding
         debug("dataSourceFactoryOnline, ref=", ref, " for p-unit ", pUnitInfo.getUnitName());
         if (pUnitInfo.getEmf() != null) {
@@ -550,9 +547,9 @@ public class GeminiServicesUtil {
      * This method will be invoked by the OfflineTracker when the data source factory 
      * that we are relying on goes offline. 
      */
-    public void dataSourceFactoryOffline(PUnitInfo pUnitInfo, ServiceReference removedRef) {
+    public void dataSourceFactoryOffline(PUnitInfo pUnitInfo, ServiceReference<?> removedRef) {
         // TODO async handling of data source removal
-        ServiceReference dsServiceRef = pUnitInfo.getDsfService();
+        ServiceReference<?> dsServiceRef = pUnitInfo.getDsfService();
         debug("dataSourceFactoryOffline, p-unit=", pUnitInfo.getUnitName(), "removedRef=", removedRef,
               "storedRef=", dsServiceRef);
         // Verify that this is the dsf service that we care about

@@ -16,7 +16,6 @@ package org.eclipse.gemini.jpa.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +23,6 @@ import javax.persistence.EntityManagerFactory;
 
 
 import org.eclipse.gemini.jpa.PUnitInfo;
-import org.eclipse.gemini.jpa.proxy.EMFServiceProxyHandler;
 
 import static org.eclipse.gemini.jpa.GeminiUtil.*;
 

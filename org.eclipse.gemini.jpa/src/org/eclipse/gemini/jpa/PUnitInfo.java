@@ -14,15 +14,11 @@
  ******************************************************************************/
 package org.eclipse.gemini.jpa;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import java.sql.Driver;
-
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceReference;
@@ -68,14 +64,14 @@ public class PUnitInfo {
      * @see GeminiServicesUtil
      */
     EMFServiceProxyHandler emfHandler;
-    ServiceRegistration emfService;
+    ServiceRegistration<?> emfService;
 
     /** 
      * EMF Builder Service state - set by servicesUtil
      * @see GeminiServicesUtil
      */
     EMFBuilderServiceProxyHandler emfBuilderHandler;
-    ServiceRegistration emfBuilderService;
+    ServiceRegistration<?> emfBuilderService;
 
     /** 
      * Shared EMF - set by EMF[Builder]ServiceProxyHandler
@@ -91,7 +87,7 @@ public class PUnitInfo {
      *          - set by services util
      * @see GeminiServicesUtil
      */
-    ServiceReference dsfService;
+    ServiceReference<?> dsfService;
 
     /** 
      * Flag to indicate whether the EMF was set by the Builder or not
@@ -105,7 +101,7 @@ public class PUnitInfo {
      * For tracking the data source factory - set by servicesUtil
      * @see GeminiServicesUtil 
      */
-    ServiceTracker tracker;
+    ServiceTracker<?,?> tracker;
 
     /*==============================*/
     /* Persistence descriptor state */
@@ -142,26 +138,26 @@ public class PUnitInfo {
     public EMFServiceProxyHandler getEmfHandler() { return emfHandler; }
     public void setEmfHandler(EMFServiceProxyHandler emfHandler) { this.emfHandler = emfHandler; }
 
-    public ServiceRegistration getEmfService() { return emfService; }
-    public void setEmfService(ServiceRegistration emfService) { this.emfService = emfService; }
+    public ServiceRegistration<?> getEmfService() { return emfService; }
+    public void setEmfService(ServiceRegistration<?> emfService) { this.emfService = emfService; }
 
     public EMFBuilderServiceProxyHandler getEmfBuilderHandler() { return emfBuilderHandler; }
     public void setEmfBuilderHandler(EMFBuilderServiceProxyHandler emfBuilderHandler) { this.emfBuilderHandler = emfBuilderHandler; }
 
-    public ServiceRegistration getEmfBuilderService() { return emfBuilderService; }
-    public void setEmfBuilderService(ServiceRegistration emfBuilderService) { this.emfBuilderService = emfBuilderService; }
+    public ServiceRegistration<?> getEmfBuilderService() { return emfBuilderService; }
+    public void setEmfBuilderService(ServiceRegistration<?> emfBuilderService) { this.emfBuilderService = emfBuilderService; }
 
     public EntityManagerFactory getEmf() { return emf; }
     public void setEmf(EntityManagerFactory emf) { this.emf = emf; }
     
-    public ServiceReference getDsfService() { return dsfService; }
-    public void setDsfService(ServiceReference dsfService) { this.dsfService = dsfService; }
+    public ServiceReference<?> getDsfService() { return dsfService; }
+    public void setDsfService(ServiceReference<?> dsfService) { this.dsfService = dsfService; }
 
     public boolean isEmfSetByBuilderService() { return emfSetByBuilderService; }
     public void setEmfSetByBuilderService(boolean flag) { emfSetByBuilderService = flag; }
     
-    public ServiceTracker getTracker() { return tracker; }
-    public void setTracker(ServiceTracker tracker) { this.tracker = tracker; }
+    public ServiceTracker<?,?> getTracker() { return tracker; }
+    public void setTracker(ServiceTracker<?,?> tracker) { this.tracker = tracker; }
 
     /*============================================*/
     /* Accessors for Persistence descriptor state */
