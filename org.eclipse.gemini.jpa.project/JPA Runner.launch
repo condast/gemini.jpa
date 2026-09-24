@@ -23,10 +23,6 @@
     <stringAttribute key="pde.version" value="3.3"/>
     <setAttribute key="selected_target_bundles">
         <setEntry value="javax.persistence@default:default"/>
-        <setEntry value="junit-platform-commons@default:default"/>
-        <setEntry value="junit-platform-engine@default:default"/>
-        <setEntry value="junit-platform-launcher@default:default"/>
-        <setEntry value="junit-vintage-engine@default:default"/>
         <setEntry value="org.apache.felix.gogo.runtime@default:default"/>
         <setEntry value="org.apache.felix.gogo.shell@default:default"/>
         <setEntry value="org.eclipse.equinox.console@default:default"/>
@@ -50,12 +46,35 @@
     </setAttribute>
     <setAttribute key="selected_workspace_bundles">
         <setEntry value="com.mysql.jdbc@default:default"/>
+        <setEntry value="nl.martijndwars.webpush@default:default"/>
         <setEntry value="org.apache.derby@default:default"/>
-        <setEntry value="org.eclipse.gemini.dbaccess.derby@default:default"/>
-        <setEntry value="org.eclipse.gemini.dbaccess.mysql@default:default"/>
-        <setEntry value="org.eclipse.gemini.dbaccess.postgresql@default:default"/>
-        <setEntry value="org.eclipse.gemini.dbaccess.samples@default:default"/>
-        <setEntry value="org.eclipse.gemini.dbaccess.test@default:default"/>
+        <setEntry value="org.condast.commons.autonomy.ui@default:default"/>
+        <setEntry value="org.condast.commons.autonomy@default:default"/>
+        <setEntry value="org.condast.commons.bugzilla@default:default"/>
+        <setEntry value="org.condast.commons.data@default:default"/>
+        <setEntry value="org.condast.commons.jinput@default:default"/>
+        <setEntry value="org.condast.commons.jpa.authentication.ui@default:default"/>
+        <setEntry value="org.condast.commons.jpa.authentication@default:default"/>
+        <setEntry value="org.condast.commons.jpa.google.geo.ui@default:default"/>
+        <setEntry value="org.condast.commons.jpa.google.geo@default:default"/>
+        <setEntry value="org.condast.commons.jpa.na@default:default"/>
+        <setEntry value="org.condast.commons.jpa.persistence@default:default"/>
+        <setEntry value="org.condast.commons.jpa.postcode@default:default"/>
+        <setEntry value="org.condast.commons.jpa.ui.na@default:default"/>
+        <setEntry value="org.condast.commons.legacy@default:default"/>
+        <setEntry value="org.condast.commons.legal@default:default"/>
+        <setEntry value="org.condast.commons.messaging@default:default"/>
+        <setEntry value="org.condast.commons.preferences@default:default"/>
+        <setEntry value="org.condast.commons.test@default:default"/>
+        <setEntry value="org.condast.commons.tinkerpop@default:default"/>
+        <setEntry value="org.condast.commons.ui.messaging@default:default"/>
+        <setEntry value="org.condast.commons.ui.widgets@default:default"/>
+        <setEntry value="org.condast.commons.ui@default:default"/>
+        <setEntry value="org.condast.commons@default:default"/>
+        <setEntry value="org.condast.js.bootstrap@default:default"/>
+        <setEntry value="org.condast.js.commons@default:default"/>
+        <setEntry value="org.condast.js.push@default:default"/>
+        <setEntry value="org.condast.js.react@default:default"/>
         <setEntry value="org.eclipse.gemini.dbaccess.util@default:default"/>
         <setEntry value="org.eclipse.gemini.jpa.samples@default:default"/>
         <setEntry value="org.eclipse.gemini.jpa.test.embeddedjdbc@default:default"/>
@@ -67,11 +86,11 @@
         <setEntry value="org.eclipse.gemini.jpa.test.xmlmappedpunit@default:default"/>
         <setEntry value="org.eclipse.gemini.jpa.tests@default:default"/>
         <setEntry value="org.eclipse.gemini.jpa@default:default"/>
-        <setEntry value="org.osgi.servlce.jpa@default:default"/>
-        <setEntry value="org.postgresql.jdbc-java6@default:default"/>
-        <setEntry value="org.postgresql.jdbc-java7@default:default"/>
-        <setEntry value="org.postgresql.jdbc-java8@default:default"/>
+        <setEntry value="org.javax.mail@default:default"/>
+        <setEntry value="org.openlayer.map@default:default"/>
         <setEntry value="osgi.enterprise@default:default"/>
+        <setEntry value="test.condast.commons.data@default:default"/>
+        <setEntry value="test.condast.commons.jinput@default:default"/>
     </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <booleanAttribute key="tracing" value="false"/>
