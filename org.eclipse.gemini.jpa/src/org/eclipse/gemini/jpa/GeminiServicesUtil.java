@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
-import javax.persistence.EntityManagerFactory;
 
 import org.eclipse.gemini.jpa.classloader.BundleProxyClassLoader;
 import org.eclipse.gemini.jpa.classloader.CompositeClassLoader;
@@ -39,6 +38,8 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.util.tracker.ServiceTracker;
+
+import javax.persistence.EntityManagerFactory;
 
 /**
  * This class provides functionality to handle service registration of 

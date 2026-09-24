@@ -156,10 +156,6 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
     // Used to compare against the <provider> element in persistence descriptors
     public String getProviderClassName() { return PROVIDER_CLASS_NAME; }
 
-    // Used to invoke regular JPA createEntityManagerFactory() methods
-    public javax.persistence.spi.PersistenceProvider getProviderInstance() { 
-        return this;
-    }
 
     public Bundle getBundle() { return ctx.getBundle(); }
     
@@ -466,5 +462,11 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
 	public boolean generateSchema(String persistenceUnitName, Map map) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public org.eclipse.gemini.jpa.provider.PersistenceProvider getProviderInstance() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

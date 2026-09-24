@@ -14,7 +14,6 @@
  ******************************************************************************/
 package org.eclipse.gemini.jpa.weaving;
 
-import java.lang.instrument.IllegalClassFormatException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -136,7 +135,7 @@ public class WeavingHookTransformer implements WeavingHook {
                         }
                     }
                 }
-            } catch (IllegalClassFormatException e) {
+            } catch (Exception e) {
                 GeminiUtil.warning("Invalid classfile format - Could not weave " + clsName, e);
                 throw new RuntimeException(e);
             }
