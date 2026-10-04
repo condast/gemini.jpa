@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
-import javax.persistence.EntityManagerFactory;
 
 import org.eclipse.gemini.jpa.classloader.BundleProxyClassLoader;
 import org.eclipse.gemini.jpa.classloader.CompositeClassLoader;
@@ -39,6 +38,8 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.util.tracker.ServiceTracker;
+
+import jakarta.persistence.EntityManagerFactory;
 
 /**
  * This class provides functionality to handle service registration of 
@@ -78,9 +79,9 @@ public class GeminiServicesUtil {
         debug("GeminiServicesUtil registering provider service for ", providerClassName);
 
         // Service strings
-        String[] serviceNames = { javax.persistence.spi.PersistenceProvider.class.getName() };
+        String[] serviceNames = { jakarta.persistence.spi.PersistenceProvider.class.getName() };
         // Get a provider JPA SPI instance 
-        javax.persistence.spi.PersistenceProvider persistenceProvider = osgiJpaProvider.getProviderInstance();
+        jakarta.persistence.spi.PersistenceProvider persistenceProvider = osgiJpaProvider.getProviderInstance();
 
         // Store the version of the provider as a service property
         String version = bundleVersion(osgiJpaProvider.getBundle());

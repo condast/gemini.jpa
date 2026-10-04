@@ -14,8 +14,8 @@
  ******************************************************************************/
 package org.eclipse.gemini.jpa.tests;
 
-import javax.persistence.Persistence;
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.junit.*;
 

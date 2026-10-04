@@ -14,7 +14,7 @@
  ******************************************************************************/
 package model.embeddedaccount;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * Test JPA model class

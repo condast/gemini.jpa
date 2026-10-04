@@ -31,7 +31,7 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.osgi.service.jdbc.DataSourceFactory;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;

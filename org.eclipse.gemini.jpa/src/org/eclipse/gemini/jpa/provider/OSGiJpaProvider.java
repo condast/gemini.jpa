@@ -17,7 +17,7 @@ package org.eclipse.gemini.jpa.provider;
 
 import java.util.Collection;
 
-import javax.persistence.spi.PersistenceProvider;
+import jakarta.persistence.spi.PersistenceProvider;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;

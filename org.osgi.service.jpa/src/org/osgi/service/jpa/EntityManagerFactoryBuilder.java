@@ -23,7 +23,7 @@ import java.util.Map;
 import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.framework.Bundle;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 /**
  * This service interface offers JPA clients the ability to create instances of

@@ -35,10 +35,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.spi.PersistenceProvider;
-import javax.persistence.spi.PersistenceUnitInfo;
-import javax.persistence.spi.ProviderUtil;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceConfiguration;
+import jakarta.persistence.spi.PersistenceProvider;
+import jakarta.persistence.spi.PersistenceUnitInfo;
+import jakarta.persistence.spi.ProviderUtil;
 import javax.sql.DataSource;
 
 import org.eclipse.gemini.jpa.AnchorClassUtil;
@@ -156,10 +157,6 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
     // Used to compare against the <provider> element in persistence descriptors
     public String getProviderClassName() { return PROVIDER_CLASS_NAME; }
 
-    // Used to invoke regular JPA createEntityManagerFactory() methods
-    public javax.persistence.spi.PersistenceProvider getProviderInstance() { 
-        return this;
-    }
 
     public Bundle getBundle() { return ctx.getBundle(); }
     
@@ -466,5 +463,17 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
 	public boolean generateSchema(String persistenceUnitName, Map map) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public org.eclipse.gemini.jpa.provider.PersistenceProvider getProviderInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EntityManagerFactory createEntityManagerFactory(PersistenceConfiguration configuration) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

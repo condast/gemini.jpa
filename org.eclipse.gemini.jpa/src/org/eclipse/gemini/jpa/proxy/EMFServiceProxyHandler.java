@@ -19,8 +19,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.spi.PersistenceProvider;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.spi.PersistenceProvider;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceFactory;

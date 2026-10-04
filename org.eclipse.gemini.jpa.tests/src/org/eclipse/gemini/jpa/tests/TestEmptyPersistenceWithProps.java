@@ -17,7 +17,7 @@ package org.eclipse.gemini.jpa.tests;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.junit.*;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;

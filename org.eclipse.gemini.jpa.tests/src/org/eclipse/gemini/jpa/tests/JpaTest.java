@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.*;
-import javax.persistence.metamodel.EntityType;
+import jakarta.persistence.*;
+import jakarta.persistence.metamodel.EntityType;
 
 import org.junit.*;
 import org.osgi.framework.BundleContext;

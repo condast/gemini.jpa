@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.spi.ClassTransformer;
-import javax.persistence.spi.PersistenceUnitInfo;
+import jakarta.persistence.spi.ClassTransformer;
+import jakarta.persistence.spi.PersistenceUnitInfo;
 
 import org.eclipse.gemini.jpa.GeminiUtil;
 import org.eclipse.gemini.jpa.PUnitInfo;

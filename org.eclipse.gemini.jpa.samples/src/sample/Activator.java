@@ -14,7 +14,7 @@
  ******************************************************************************/
 package sample;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;

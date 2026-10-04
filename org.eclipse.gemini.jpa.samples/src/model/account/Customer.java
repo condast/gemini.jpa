@@ -14,7 +14,7 @@
  ******************************************************************************/
 package model.account;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * Gemini JPA Sample class

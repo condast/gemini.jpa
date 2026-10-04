@@ -14,8 +14,8 @@
  ******************************************************************************/
 package model.embeddedjdbc;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 /**
  * Test JPA model class
