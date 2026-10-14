@@ -454,19 +454,16 @@ public class EclipseLinkOSGiProvider implements BundleActivator,
 
 	@Override
 	public void generateSchema(PersistenceUnitInfo info, Map map) {
-		// TODO Auto-generated method stub
-		
+		this.eclipseLinkProvider.generateSchema(info, map);
 	}
 
 	@Override
 	public boolean generateSchema(String persistenceUnitName, Map map) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.generateSchema(persistenceUnitName, map);
 	}
 
 	@Override
-	public org.eclipse.gemini.jpa.provider.PersistenceProvider getProviderInstance() {
-		// TODO Auto-generated method stub
-		return null;
+	public PersistenceProvider getProviderInstance() {
+		return this.eclipseLinkProvider;
 	}
 }
